@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Yutong Alison Mei</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    @keyframes fadein {
+      from { opacity: 0; transform: translateY(12px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: #FCF8F2;
+      color: #111;
+      line-height: 1.6;
+      animation: fadein 0.8s ease forwards;
+    }
+
+    /* NAV */
+    nav {
+      display: flex;
+      align-items: center;
+      padding: 20px 48px;
+      border-bottom: 1px solid #e0e0da;
+      position: sticky;
+      top: 0;
+      background: #FCF8F2;
+      z-index: 10;
+    }
+
+    nav .logo {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    nav .logo img {
+      width: 52px;
+      height: 36px;
+      object-fit: contain;
+    }
+
+    nav .divider {
+      width: 1px;
+      height: 20px;
+      background: #ccc;
+    }
+
+    nav .links {
+      display: flex;
+      gap: 28px;
+    }
+
+    nav .links a {
+      text-decoration: none;
+      color: #111;
+      font-size: 15px;
+      opacity: 0.7;
+      transition: opacity 0.2s;
+    }
+
+    nav .links a:hover { opacity: 1; }
+    nav .links a.active { opacity: 1; font-weight: 500; }
+
+    nav .social {
+      margin-left: auto;
+      display: flex;
+      gap: 16px;
+      align-items: center;
+    }
+
+    nav .social a {
+      color: #111;
+      opacity: 0.7;
+      transition: opacity 0.2s;
+      text-decoration: none;
+      font-size: 14px;
+    }
+
+    nav .social a:hover { opacity: 1; }
+
+    /* MAIN */
+    main {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 80px 48px;
+    }
+
+    .hero-name {
+      font-size: clamp(48px, 8vw, 80px);
+      font-weight: 700;
+      letter-spacing: -2px;
+      line-height: 1.05;
+      margin-bottom: 16px;
+    }
+
+    .hero-tags {
+      font-size: 15px;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .hero-tags .location {
+      font-weight: 400;
+      font-size: 14px;
+    }
+
+    .hero-body {
+      margin-top: 40px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .hero-body p {
+      font-size: 17px;
+      line-height: 1.75;
+      color: #222;
+    }
+
+    .hero-body a {
+      color: #726389;
+      text-decoration: none;
+    }
+
+    .hero-body a:hover { text-decoration: underline; }
+
+    /* SECTIONS */
+    .section {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 80px 48px;
+      border-top: 1px solid #e0e0da;
+    }
+
+    .section-title {
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #888;
+      margin-bottom: 40px;
+    }
+
+    /* PUBLICATIONS */
+    .pub-list {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .pub-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 24px;
+    }
+
+    .pub-item .pub-title {
+      font-size: 16px;
+      color: #111;
+      text-decoration: none;
+    }
+
+    .pub-item .pub-title:hover {
+      color: #726389;
+    }
+
+    .pub-item .pub-year {
+      font-size: 14px;
+      color: #888;
+      white-space: nowrap;
+    }
+
+    /* PLAYGROUND */
+    .playground-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 24px;
+    }
+
+    .playground-card {
+      border: 1px solid #e0e0da;
+      border-radius: 12px;
+      overflow: hidden;
+      text-decoration: none;
+      color: #111;
+      transition: transform 0.2s, box-shadow 0.2s;
+      background: #fff;
+    }
+
+    .playground-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+    }
+
+    .playground-card .card-img {
+      width: 100%;
+      height: 160px;
+      background: #e8e8e2;
+      object-fit: cover;
+    }
+
+    .playground-card .card-body {
+      padding: 16px;
+    }
+
+    .playground-card .card-title {
+      font-size: 15px;
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
+
+    .playground-card .card-desc {
+      font-size: 13px;
+      color: #888;
+      line-height: 1.5;
+    }
+
+    /* FOOTER */
+    footer {
+      border-top: 1px solid #e0e0da;
+      padding: 24px 48px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 14px;
+      color: #888;
+      margin-top: 80px;
+    }
+
+    footer .footer-links {
+      display: flex;
+      gap: 24px;
+    }
+
+    footer .footer-links a {
+      text-decoration: none;
+      color: #111;
+      opacity: 0.7;
+      transition: opacity 0.2s;
+    }
+
+    footer .footer-links a:hover { opacity: 1; }
+
+    footer .footer-links a.active {
+      opacity: 1;
+      font-weight: 500;
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">
+    <img src="images/logo.png" alt="logo">
+    <div class="divider"></div>
+    <div class="links">
+      <a href="index.html" class="active">Home</a>
+      <a href="#publications">Publications</a>
+      <a href="#playground">Playground</a>
+      <a href="blog.html">Blog</a>
+    </div>
+  </div>
+  <div class="social">
+    <a href="https://www.linkedin.com/in/yutong-alison-mei/" target="_blank">LinkedIn</a>
+    <a href="mailto:yutongalisonmei@gmail.com">Email</a>
+  </div>
+</nav>
+
+<main>
+  <h1 class="hero-name"></h1>
+  <div class="hero-tags">
+    <span>Designer · Researcher · Educator · Gamer</span>
+    <span class="location">📍 New York · Hong Kong</span>
+  </div>
+
+  <div class="hero-body">
+    <p>
+      Hi, I'm Alison. I study adaptive XR systems within Human Computer Interaction,
+      with a focus on embodied and multimodal interaction and AI. My work explores how
+      immersive environments and tangible interfaces can sense and respond to human rhythm,
+      action, and context, shaping cognition, communication, and emotional experience.
+    </p>
+    <p>
+      I am currently a game student <a href="https://columbia.edu" target="_blank">@ Columbia University</a>,
+      working with serious games and XR systems, a product designer
+      <a href="https://curiously.app/" target="_blank">@ Curiously</a>, where I work on AI supported learning
+      and educational chat systems, and a research assistant
+      <a href="https://arkxlab.github.io/" target="_blank">@ HKUST(GZ)'s ARK Lab</a>, where I develop embodied math
+      learning tools for autistic children and playful XR learning experiences.
+    </p>
+    <p>
+      I enjoy building hands on prototypes as a way of exploring playful and embodied
+      interaction, often using learning contexts to study cognitive and emotional development.
+    </p>
+  </div>
+</main>
+
+
+
+
+
+
+
+
+
+<footer>
+  <span>© Yutong Alison Mei | 2026</span>
+  <div class="footer-links">
+    <a href="index.html" class="active">Home</a>
+    <a href="#publications">Publications</a>
+    <a href="#playground">Playground</a>
+    <a href="blog.html">Blog</a>
+  </div>
+</footer>
+
+<script>
+  const name = 'Yutong Alison Mei';
+  const el = document.querySelector('.hero-name');
+  name.split('').forEach((char, i) => {
+    const span = document.createElement('span');
+    span.textContent = char === ' ' ? '\u00a0' : char;
+    span.style.cssText = 'opacity:0; transition: opacity 0.12s ease; transition-delay:' + (i * 0.06 + 0.2) + 's';
+    el.appendChild(span);
+    requestAnimationFrame(() => requestAnimationFrame(() => span.style.opacity = 1));
+  });
+</script>
+
+</body>
+</html>
