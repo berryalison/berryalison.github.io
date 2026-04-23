@@ -13,6 +13,11 @@
       to { opacity: 1; transform: translateY(0); }
     }
 
+    @keyframes pulse {
+      0%, 100% { opacity: 0.4; transform: scale(1); }
+      50% { opacity: 1; transform: scale(1.2); }
+    }
+
     body {
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       background: #FCF8F2;
@@ -21,7 +26,6 @@
       animation: fadein 0.8s ease forwards;
     }
 
-    /* NAV */
     nav {
       display: flex;
       align-items: center;
@@ -84,11 +88,53 @@
 
     nav .social a:hover { opacity: 1; }
 
-    /* MAIN */
     main {
       max-width: 860px;
       margin: 0 auto;
-      padding: 80px 48px;
+      padding: 80px 48px 40px;
+    }
+
+    .hero-name-wrapper {
+      display: flex;
+      align-items: center;
+      gap: 0;
+      margin-bottom: 16px;
+      overflow: visible;
+      padding-bottom: 16px;
+    }
+
+    .hero-hint {
+      font-size: 18px;
+      color: #726389;
+      opacity: 1;
+      transition: opacity 0.3s ease;
+      margin-right: 8px;
+      flex-shrink: 0;
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    .hero-name-wrapper:hover .hero-hint {
+      opacity: 0;
+      animation: none;
+    }
+
+    .hero-avatar {
+      border-radius: 50%;
+      object-fit: cover;
+      opacity: 0;
+      transform: translateX(-20px);
+      transition: all 0.4s ease;
+      flex-shrink: 0;
+      width: 0;
+      height: 72px;
+      margin: 0;
+    }
+
+    .hero-name-wrapper:hover .hero-avatar {
+      opacity: 1;
+      transform: translateX(0);
+      width: 72px;
+      margin-right: 12px;
     }
 
     .hero-name {
@@ -96,7 +142,11 @@
       font-weight: 700;
       letter-spacing: -2px;
       line-height: 1.05;
-      margin-bottom: 16px;
+      transition: transform 0.4s ease;
+    }
+
+    .hero-name-wrapper:hover .hero-name {
+      transform: translateX(16px);
     }
 
     .hero-tags {
@@ -134,7 +184,6 @@
 
     .hero-body a:hover { text-decoration: underline; }
 
-    /* SECTIONS */
     .section {
       max-width: 860px;
       margin: 0 auto;
@@ -151,82 +200,68 @@
       margin-bottom: 40px;
     }
 
-    /* PUBLICATIONS */
-    .pub-list {
+    .recently-list {
       display: flex;
       flex-direction: column;
-      gap: 24px;
+      gap: 20px;
     }
 
-    .pub-item {
-      display: flex;
-      justify-content: space-between;
-      align-items: baseline;
-      gap: 24px;
-    }
-
-    .pub-item .pub-title {
+    .recently-item {
       font-size: 16px;
-      color: #111;
-      text-decoration: none;
+      line-height: 1.75;
+      color: #222;
+      display: flex;
+      align-items: baseline;
+      gap: 16px;
+      padding-left: 16px;
+      border-left: 2.5px solid #726389;
     }
 
-    .pub-item .pub-title:hover {
-      color: #726389;
-    }
-
-    .pub-item .pub-year {
-      font-size: 14px;
+    .recently-item .date {
+      font-size: 12px;
+      font-weight: 600;
       color: #888;
       white-space: nowrap;
+      min-width: 72px;
     }
 
-    /* PLAYGROUND */
-    .playground-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-      gap: 24px;
+    .highlight {
+      color: #726389;
+      font-weight: 500;
+      position: relative;
+      cursor: pointer;
     }
 
-    .playground-card {
-      border: 1px solid #e0e0da;
-      border-radius: 12px;
-      overflow: hidden;
+    .highlight a {
+      color: #726389;
       text-decoration: none;
-      color: #111;
-      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .highlight a:hover { text-decoration: underline; }
+
+    .highlight .preview {
+      display: none;
+      position: absolute;
+      bottom: calc(100% + 10px);
+      left: 50%;
+      transform: translateX(-50%);
+      width: 450px;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+      z-index: 100;
       background: #fff;
     }
 
-    .playground-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 8px 24px rgba(0,0,0,0.08);
-    }
-
-    .playground-card .card-img {
+    .highlight .preview img {
       width: 100%;
-      height: 160px;
-      background: #e8e8e2;
-      object-fit: cover;
+      max-height: 320px;
+      object-fit: contain;
+      display: block;
     }
 
-    .playground-card .card-body {
-      padding: 16px;
-    }
+    .highlight:hover .preview { display: block; }
 
-    .playground-card .card-title {
-      font-size: 15px;
-      font-weight: 600;
-      margin-bottom: 6px;
-    }
-
-    .playground-card .card-desc {
-      font-size: 13px;
-      color: #888;
-      line-height: 1.5;
-    }
-
-    /* FOOTER */
     footer {
       border-top: 1px solid #e0e0da;
       padding: 24px 48px;
@@ -266,9 +301,8 @@
     <div class="divider"></div>
     <div class="links">
       <a href="index.html" class="active">Home</a>
-      <a href="#publications">Publications</a>
-      <a href="#playground">Playground</a>
-      <a href="blog.html">Blog</a>
+      <a href="#recently">Recently</a>
+      <a href="playground.html">Playground</a>
     </div>
   </div>
   <div class="social">
@@ -278,7 +312,11 @@
 </nav>
 
 <main>
-  <h1 class="hero-name"></h1>
+  <div class="hero-name-wrapper">
+    <span class="hero-hint">✦</span>
+    <img class="hero-avatar" src="images/web-me.png" alt="Alison">
+    <h1 class="hero-name"></h1>
+  </div>
   <div class="hero-tags">
     <span>Designer · Researcher · Educator · Gamer</span>
     <span class="location">📍 New York · Hong Kong</span>
@@ -306,21 +344,44 @@
   </div>
 </main>
 
+<section class="section" id="recently">
+  <p class="section-title">Recently</p>
+  <div class="recently-list">
 
+    <div class="recently-item">
+      <span class="date">Apr 2026</span>
+      <span>Climbit selected to be featured at Anthropic's upcoming Code with Claude event 👀</span>
+    </div>
 
+    <div class="recently-item">
+      <span class="date">Apr 2026</span>
+      <span>Poster accepted to <span class="highlight">I3D 2026<span class="preview"><img src="images/Rec/I3D.png" alt="I3D"></span></span> 🎉 — see you in San Francisco in May!</span>
+    </div>
 
+    <div class="recently-item">
+      <span class="date">Mar 2026</span>
+      <span>Our tab manager Chrome extension <span class="highlight">Tabit<span class="preview"><img src="images/Rec/tabit.png" alt="Tabit"></span></span> is now live on the Chrome Web Store — <a href="https://chromewebstore.google.com/detail/balfedbffogihlkfffhngojhmjpjfpcf?utm_source=item-share-cb" target="_blank" style="color:#726389; font-weight:500;">try me 🙌!!!</a></span>
+    </div>
 
+    <div class="recently-item">
+      <span class="date">Mar 2026</span>
+      <span>Won <span class="highlight">Bambu Labs Prize<span class="preview"><img src="images/Rec/Bambu.JPG" alt="Bambu"></span></span> at HARD MODE: Hardware × AI Hackathon hosted by MIT Media Lab. <span class="highlight">Climbit<span class="preview"><img src="images/Rec/Climbit.JPG" alt="Climbit"></span></span>, our climbing game with a custom ball controller, was featured in Anthropic's Instagram — including a photo of <span class="highlight">me and our ball<span class="preview"><img src="images/Rec/IGpost.JPG" alt="IGpost"></span></span> 🧗📸</span>
+    </div>
 
+    <div class="recently-item">
+      <span class="date">Jan 2026</span>
+      <span>Attended <span class="highlight">Reality Hack<span class="preview"><img src="images/Rec/RH.JPG" alt="RH"></span></span> — first dive into MR development 🤩</span>
+    </div>
 
-
+  </div>
+</section>
 
 <footer>
   <span>© Yutong Alison Mei | 2026</span>
   <div class="footer-links">
     <a href="index.html" class="active">Home</a>
-    <a href="#publications">Publications</a>
-    <a href="#playground">Playground</a>
-    <a href="blog.html">Blog</a>
+    <a href="#recently">Recently</a>
+    <a href="playground.html">Playground</a>
   </div>
 </footer>
 
