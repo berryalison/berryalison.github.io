@@ -332,7 +332,7 @@
 
   <div class="hero-body">
     <p>
-      Hi, I'm Alison. I study adaptive XR systems within Human Computer Interaction,
+      Hi, I'm 雨橦 (Yǔ Tóng), also known as Alison. I study adaptive XR systems within Human Computer Interaction,
       with a focus on embodied and multimodal interaction and AI. My work explores how
       immersive environments and tangible interfaces can sense and respond to human rhythm,
       action, and context, shaping cognition, communication, and emotional experience.
@@ -407,6 +407,27 @@
   });
 
   wrapper.classList.add('show-avatar');
+
+  // 滚动时动态切换 active
+  const sections = ['recently'];
+  const navLinks = document.querySelectorAll('nav .links a');
+
+  window.addEventListener('scroll', () => {
+    let current = 'home';
+    sections.forEach(id => {
+      const el = document.getElementById(id);
+      if (el && window.scrollY >= el.offsetTop - 100) {
+        current = id;
+      }
+    });
+
+    navLinks.forEach(a => {
+      a.classList.remove('active');
+      const href = a.getAttribute('href');
+      if (current === 'home' && href === 'index.html') a.classList.add('active');
+      if (current !== 'home' && href === '#' + current) a.classList.add('active');
+    });
+  });
 
   setTimeout(() => {
     wrapper.classList.remove('show-avatar');
