@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Playground — Yutong Alison Mei</title>
+  <link rel="icon" type="image/png" href="favicon.png">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    @keyframes fadein {
+      from { opacity: 0; transform: translateY(12px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: #FCF8F2;
+      color: #111;
+      line-height: 1.6;
+      animation: fadein 0.8s ease forwards;
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      padding: 20px 48px;
+      border-bottom: 1px solid #e0e0da;
+      position: sticky;
+      top: 0;
+      background: #FCF8F2;
+      z-index: 10;
+    }
+
+    nav .logo {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    nav .logo img {
+      width: 52px;
+      height: 36px;
+      object-fit: contain;
+    }
+
+    nav .divider {
+      width: 1px;
+      height: 20px;
+      background: #ccc;
+    }
+
+    nav .links {
+      display: flex;
+      gap: 28px;
+    }
+
+    nav .links a {
+      text-decoration: none;
+      color: #111;
+      font-size: 15px;
+      opacity: 0.7;
+      transition: opacity 0.2s;
+    }
+
+    nav .links a:hover { opacity: 1; }
+    nav .links a.active { opacity: 1; font-weight: 500; color: #726389; }
+
+    nav .social {
+      margin-left: auto;
+      display: flex;
+      gap: 16px;
+      align-items: center;
+    }
+
+    main {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 80px 48px 40px;
+    }
+
+    .section-title {
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #888;
+      margin-bottom: 40px;
+    }
+
+    .playground-list {
+      display: flex;
+      flex-direction: column;
+      gap: 28px;
+    }
+
+    .playground-card {
+      position: relative;
+      border-radius: 12px;
+      overflow: hidden;
+    }
+
+    .playground-card img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .playground-card .overlay {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(114, 99, 137, 0.85);
+      color: #fff;
+      font-size: 28px;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .playground-card:hover .overlay { opacity: 1; }
+
+    footer {
+      border-top: 1px solid #e0e0da;
+      padding: 24px 48px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 14px;
+      color: #888;
+      margin-top: 80px;
+    }
+
+    footer .footer-links {
+      display: flex;
+      gap: 24px;
+    }
+
+    footer .footer-links a {
+      text-decoration: none;
+      color: #111;
+      opacity: 0.7;
+      transition: opacity 0.2s;
+    }
+
+    footer .footer-links a:hover { opacity: 1; }
+
+    footer .footer-links a.active {
+      opacity: 1;
+      font-weight: 500;
+      color: #726389;
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">
+    <img src="images/logo.png" alt="logo">
+    <div class="divider"></div>
+    <div class="links">
+      <a href="index.html">Home</a>
+      <a href="index.html#recently">Recently</a>
+      <a href="playground.html" class="active">Playground</a>
+    </div>
+  </div>
+  <div class="social">
+    <a href="https://www.linkedin.com/in/yutong-alison-mei/" target="_blank" style="opacity:0.7; transition:opacity 0.2s;" onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=0.7">
+      <img src="images/Icon/linkedin.png" alt="LinkedIn" style="width:20px; height:20px; object-fit:contain;">
+    </a>
+    <a href="mailto:yutongalisonmei@gmail.com" style="opacity:0.7; transition:opacity 0.2s;" onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=0.7">
+      <img src="images/Icon/email.png" alt="Email" style="width:20px; height:20px; object-fit:contain;">
+    </a>
+  </div>
+</nav>
+
+<main>
+  <p class="section-title">Playground</p>
+  <div class="playground-list">
+
+    <div class="playground-card">
+      <img src="images/GITD.png" alt="GITD">
+      <div class="overlay">GITD</div>
+    </div>
+
+    <div class="playground-card">
+      <img src="images/Curiously.png" alt="Curiously">
+      <div class="overlay">Curiously</div>
+    </div>
+
+    <div class="playground-card">
+      <img src="images/Outreach.png" alt="Outreach">
+      <div class="overlay">Outreach</div>
+    </div>
+
+    <div class="playground-card">
+      <img src="images/Climbit.png" alt="Climbit">
+      <div class="overlay">Climbit</div>
+    </div>
+
+    <div class="playground-card">
+      <img src="images/TabIt.png" alt="TabIt">
+      <div class="overlay">TabIt</div>
+    </div>
+
+  </div>
+</main>
+
+<footer>
+  <span>© Yutong Alison Mei | 2026</span>
+  <div class="footer-links">
+    <a href="index.html">Home</a>
+    <a href="index.html#recently">Recently</a>
+    <a href="playground.html" class="active">Playground</a>
+  </div>
+</footer>
+
+</body>
+</html>

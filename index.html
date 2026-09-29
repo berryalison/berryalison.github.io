@@ -265,6 +265,36 @@
 
     .highlight:hover .preview { display: block; }
 
+    .archive {
+      margin-top: 24px;
+    }
+
+    .archive summary {
+      list-style: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #888;
+      transition: color 0.2s;
+    }
+
+    .archive summary::-webkit-details-marker { display: none; }
+    .archive summary:hover { color: #726389; }
+
+    .archive summary::before {
+      content: '▸';
+      font-size: 11px;
+    }
+
+    .archive[open] summary::before { content: '▾'; }
+
+    .archive .recently-list { margin-top: 28px; }
+
     footer {
       border-top: 1px solid #e0e0da;
       padding: 24px 48px;
@@ -327,7 +357,7 @@
   </div>
   <div class="hero-tags">
     <span>Designer · Researcher · Educator · Gamer</span>
-    <span class="location">📍 New York · Hong Kong</span>
+    <span class="location">📍 Hong Kong · New York </span>
   </div>
 
   <div class="hero-body">
@@ -338,12 +368,8 @@
       action, and context, shaping cognition, communication, and emotional experience.
     </p>
     <p>
-      I am currently a game student <a href="https://columbia.edu" target="_blank">@ Columbia University</a>,
-      working with serious games and XR systems, a product designer
-      <a href="https://curiously.app/" target="_blank">@ Curiously</a>, where I work on AI supported learning
-      and educational chat systems, and a research assistant
-      <a href="https://arkxlab.github.io/" target="_blank">@ HKUST(GZ)'s ARK Lab</a>, where I develop embodied math
-      learning tools for autistic children and playful XR learning experiences.
+      I am currently a phd student <a href="https://www.polyu.edu.hk/" target="_blank">@ PloyU(HK)</a>,
+      working with HCI and novel interface.
     </p>
     <p>
       I enjoy building hands on prototypes as a way of exploring playful and embodied
@@ -355,6 +381,42 @@
 <section class="section" id="recently">
   <p class="section-title">Recently</p>
   <div class="recently-list">
+
+    <div class="recently-item">
+      <span class="date">Sep 2026</span>
+      <span>Co-first author paper K-Advisor accepted to ICWL 2026 🎉</span>
+    </div>
+
+    <div class="recently-item">
+      <span class="date">Aug 2026</span>
+      <span>Officially joined <span class="highlight">Hong Kong PolyU</span> as a PhD researcher in CS-HCI 🌟</span>
+    </div>
+
+    <div class="recently-item">
+      <span class="date">Jun 2026</span>
+      <span>I3D <span class="highlight">extended abstract</span> is now available in the ACM Digital Library</span>
+    </div>
+
+    <div class="recently-item">
+      <span class="date">May 2026</span>
+      <span>Graduated from <span class="highlight">Columbia University</span> 🎓</span>
+    </div>
+
+    <div class="recently-item">
+      <span class="date">May 2026</span>
+      <span><span class="highlight">Presented poster<span class="preview"><img src="images/Rec/I3D.png" alt="I3D"></span></span> at I3D 2026 in San Francisco 🎉</span>
+    </div>
+
+    <div class="recently-item">
+      <span class="date">May 2026</span>
+      <span><span class="highlight">Climbit<span class="preview"><img src="images/Rec/Climbit.JPG" alt="Climbit"></span></span> was on display at Anthropic's <span class="highlight">Code with Claude</span> event in SF — such a full-circle moment 🤍</span>
+    </div>
+
+  </div>
+
+  <details class="archive">
+    <summary>Archive</summary>
+    <div class="recently-list">
 
     <div class="recently-item">
       <span class="date">Apr 2026</span>
@@ -381,7 +443,8 @@
       <span>Attended <span class="highlight">Reality Hack<span class="preview"><img src="images/Rec/RH.JPG" alt="RH"></span></span> — first dive into MR development 🤩</span>
     </div>
 
-  </div>
+    </div>
+  </details>
 </section>
 
 <footer>
@@ -409,7 +472,7 @@
   wrapper.classList.add('show-avatar');
 
   // 滚动时动态切换 active
-  const sections = ['recently'];
+  const sections = ['recently', 'playground'];
   const navLinks = document.querySelectorAll('nav .links a');
 
   window.addEventListener('scroll', () => {
